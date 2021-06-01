@@ -25,7 +25,7 @@ namespace Autobarn.Website.Controllers.api
             this.db = db;
         }
 
-        const int PAGE_SIZE = 10;
+        const int PAGE_SIZE = 15;
         [HttpGet]
         public IEnumerable<Vehicle> Get(int page)
         {
