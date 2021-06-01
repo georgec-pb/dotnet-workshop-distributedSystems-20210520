@@ -24,10 +24,12 @@ namespace Autobarn.Website.Controllers.api
         {
             this.db = db;
         }
+
+        const int PAGE_SIZE = 10;
         [HttpGet]
-        public IEnumerable<Vehicle> Get()
+        public IEnumerable<Vehicle> Get(int page)
         {
-            return db.ListVehicles();
+            return db.ListVehicles().Skip(page * PAGE_SIZE).Take(PAGE_SIZE);
         }
 
         // GET api/vehicles/5
