@@ -84,9 +84,11 @@ namespace Autobarn.Website.Controllers.api
 
         // GET api/vehicles/5
         [HttpGet("{id}")]
-        public Vehicle Get(string id)
+        public IActionResult Get(string id)
         {
-            return db.FindVehicle(id);
+            var vehicle = db.FindVehicle(id);
+            if (vehicle == default) return NotFound($"Sorry, there's no car with registration {id} in our system.");
+            return Ok();
         }
 
         // POST api/vehicles
